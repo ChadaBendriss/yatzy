@@ -1,1 +1,1 @@
-This project contains c++ files
+# Lab 4: Yatzy Game JS
