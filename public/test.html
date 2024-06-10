@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatzy!</title>
+    <script src="assets/dice.js"></script>
+    <script src="assets/yatzy_game.js"></script>
+    <script src="assets/yatzy_engine.js"></script>
+    <style>
+         body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            min-height: 100vh; 
+        }
+        h1, h2 {
+            color: #333;
+            font-weight: normal;
+        }
+        button, select {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border: 1px solid #bebebe;
+        }
+        #diceValues {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #3ba32d;
+        }
+        .tables-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        table {
+            width: 300px;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f9f9f9;
+        }
+        
+        #score-total {
+            font-size: 20px;
+            margin-top: 100px;
+            position: fixed;
+            top:0;
+            right:70px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yatzy!</h1>
+
+    <div id="diceValues"></div>
+
+    <div class="flex"><button id="rollButton">Roll Dice</button>
+    <button id="scoreButton" disabled>Score Selected</button>
+    
+    <select id="scoreBox">
+        <option value="ones">Ones</option>
+        <option value="twos">Twos</option>
+        <option value="threes">Threes</option>
+        <option value="fours">Fours</option>
+        <option value="fives">Fives</option>
+        <option value="sixes">Sixes</option>
+        <option value="threeOfAKind">Three of a Kind</option>
+        <option value="fourOfAKind">Four of a Kind</option>
+        <option value="fullHouse">Full House</option>
+        <option value="smallStraight">Small Straight</option>
+        <option value="largeStraight">Large Straight</option>
+        <option value="yatzy">Yatzy</option>
+        <option value="chance">Chance</option>
+    </select>
+    </div>
+
+    
+    <div class="tables-container">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ones</td>
+                        <td id="score-ones"></td>
+                    </tr>
+                    <tr>
+                        <td>Twos</td>
+                        <td id="score-twos"></td>
+                    </tr>
+                    <tr>
+                        <td>Threes</td>
+                        <td id="score-threes"></td>
+                    </tr>
+                    <tr>
+                        <td>Fours</td>
+                        <td id="score-fours"></td>
+                    </tr>
+                    <tr>
+                        <td>Fives</td>
+                        <td id="score-fives"></td>
+                    </tr>
+                    <tr>
+                        <td>Sixes</td>
+                        <td id="score-sixes"></td>
+                    </tr>
+                    <tr>
+                        <td>Bonus</td>
+                        <td id="score-bonus"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Upper Score</td>
+                        <td id="score-upper-total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Three of a Kind</td>
+                        <td id="score-threeOfAKind"></td>
+                    </tr>
+                    <tr>
+                        <td>Four of a Kind</td>
+                        <td id="score-fourOfAKind"></td>
+                    </tr>
+                    <tr>
+                        <td>Full House</td>
+                        <td id="score-fullHouse"></td>
+                    </tr>
+                    <tr>
+                        <td>Small Straight</td>
+                        <td id="score-smallStraight"></td>
+                    </tr>
+                    <tr>
+                        <td>Large Straight</td>
+                        <td id="score-largeStraight"></td>
+                    </tr>
+                    <tr>
+                        <td>Yatzy</td>
+                        <td id="score-yatzy"></td>
+                    </tr>
+                    <tr>
+                        <td>Chance</td>
+                        <td id="score-chance"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Lower Score</td>
+                        <td id="score-lower-total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="score-total">Total Score: 0</div>
+
+    <script>
+        const game = new YatzyGame();
+        const diceValuesDiv = document.getElementById('diceValues');
+        const scoreBox = document.getElementById('scoreBox');
+        const rollButton = document.getElementById('rollButton');
+        const scoreButton = document.getElementById('scoreButton');
+
+        document.getElementById('rollButton').addEventListener('click', () => {
+            game.rollDice();
+            diceValuesDiv.innerHTML = `Dice Values: ${game.getDiceValues().join(', ')}`;
+            if (game.turn >= 3) {
+                rollButton.disabled = true;
+            }
+            scoreButton.disabled = false;
+        });
+
+        document.getElementById('scoreButton').addEventListener('click', () => {
+            const selectedScoreBox = scoreBox.value;
+            if (game.scores[selectedScoreBox] !== undefined) {
+                alert(`Category ${selectedScoreBox} already scored.`);
+                return;
+            }
+            scoreTurn(game, selectedScoreBox);
+            updateScoreTable();
+            rollButton.disabled = false;
+            scoreButton.disabled = true;
+            game.resetTurn();
+        });
+
+        function updateScoreTable() {
+            document.getElementById('score-ones').innerText = game.scores.ones || 0;
+            document.getElementById('score-twos').innerText = game.scores.twos || 0;
+            document.getElementById('score-threes').innerText = game.scores.threes || 0;
+            document.getElementById('score-fours').innerText = game.scores.fours || 0;
+            document.getElementById('score-fives').innerText = game.scores.fives || 0;
+            document.getElementById('score-sixes').innerText = game.scores.sixes || 0;
+            document.getElementById('score-bonus').innerText = game.bonus || 0;
+
+            const upperTotal = (game.scores.ones || 0) + (game.scores.twos || 0) + (game.scores.threes || 0) + 
+                (game.scores.fours || 0) + (game.scores.fives || 0) + (game.scores.sixes || 0) + game.bonus;
+            document.getElementById('score-upper-total').innerText = upperTotal || 0;
+
+            document.getElementById('score-threeOfAKind').innerText = game.scores.threeOfAKind || 0;
+            document.getElementById('score-fourOfAKind').innerText = game.scores.fourOfAKind || 0;
+            document.getElementById('score-fullHouse').innerText = game.scores.fullHouse || 0;
+            document.getElementById('score-smallStraight').innerText = game.scores.smallStraight || 0;
+            document.getElementById('score-largeStraight').innerText = game.scores.largeStraight || 0;
+            document.getElementById('score-yatzy').innerText = game.scores.yatzy || 0;
+            document.getElementById('score-chance').innerText = game.scores.chance || 0;
+
+            const lowerTotal = (game.scores.threeOfAKind || 0) + (game.scores.fourOfAKind || 0) + 
+                (game.scores.fullHouse || 0) + (game.scores.smallStraight || 0) + (game.scores.largeStraight || 0) +
+                (game.scores.yatzy || 0) + (game.scores.chance || 0);
+            document.getElementById('score-lower-total').innerText = lowerTotal || 0;
+
+            document.getElementById('score-total').innerText = `Total Score: ${game.totalScore || 0}`;
+        }
+    </script>
+</body>
+</html>
