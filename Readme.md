@@ -1,1 +1,1 @@
-# Lab 4: Yatzy Game JS
+# Yatzy Game JS
