@@ -13,6 +13,10 @@ This document outlines the design system for the Yatzy game, including fonts, co
 - **Background Color**: #3ba32d (Green)
 - **Table Color**: #fff (White)
 - **Table Header element Color**: #f9f9f9 (White)
+- **Dice Border Color**: #0d5297; (Blue)
+- **Dice background-color**: #4075df (Blue)
+- **Dice background-color hover**: #3498db (Light Blue)
+
 
 ## Game Components
 

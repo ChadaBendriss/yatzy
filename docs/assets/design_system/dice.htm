@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice</title>
+    <title>Dice</title> 
+</head>
+<body>
     <style>
-        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .dice:hover {
+            background-color: #3498db;
+        }
         .dice {
             display: inline-block;
             width: 65px;
@@ -17,11 +27,9 @@
             line-height: 47px;
             font-size: 27px;
             background-color: #4075df;
-            color: #2c3e50;
+            color: #fff;
         }
     </style>
-</head>
-<body>
     <div class="dice">1</div>
     <div class="dice">2</div>
     <div class="dice">3</div>
