@@ -26,7 +26,7 @@ The game board shows the five dice, a roll button, and options to keep or reroll
 The scoreboard displays the current score, score boxes, and the total score.
 
 ### End of the Game
-The top rigtht screen shows the final score and provides an option to start a new game.
+The top rigtht screen shows the final score and refresh the page to start a new game.
 
 ### Additional Concepts
 - **Header**: Contains the game title.
