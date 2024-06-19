@@ -34,4 +34,3 @@ The top rigtht screen shows the final score and refresh the page to start a new 
 
 ### Additional Concepts
 - **Header**: Contains the game title.
-
