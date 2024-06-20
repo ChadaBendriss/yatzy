@@ -43,4 +43,18 @@ class YatzyGame {
     getDiceValues() {
         return this.dice.map(d => d.value);
     }
+
+    toggleKeep(index) {
+        this.keep[index] = !this.keep[index];
+        console.log(`Dice ${index + 1} keep state: ${this.keep[index]}`);
+    }
+    
+    updateDiceDisplay() {
+        this.dice.forEach((die, index) => {
+            const diceSpan = document.querySelector(`#dice${index} span`);
+            diceSpan.textContent = die.value;
+            console.log(`Dice ${index + 1}: ${die.value} (Kept: ${this.keep[index]})`);
+        });
+    }
 }
+

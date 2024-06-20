@@ -1,36 +1,103 @@
-# Design System
+# Yatzy Game Design System
 
-This document outlines the design system for the Yatzy game, including fonts, colors, and game components.
+## Structural Components
 
-## Fonts and Colors
+### Headers
+- **Main Header (`<h1>`)**
+  - Font: Helvetica, Arial, sans-serif
+  - Size: 36px
+  - Weight: Normal
+  - Color: #333
+  - Alignment: Center
 
-### Fonts
-- **Fonts Used**: Helvetica, Arial, sans-serif
+### Buttons
+- **Primary Button (`Roll Dice`, `Score Selected`)**
+  - Font: Helvetica, Arial, sans-serif
+  - Size: 16px
+  - Padding: 10px
+  - Border: 1px solid #bebebe
+  - Margin: 10px 20px
+  - Background Color: #f9f9f9
+  - Text Color: #000
+  - Cursor: Pointer
 
-### Colors
-- **Primary Color**: #000000 (Black)
-- **Dice Values Color**: #333 (Grey)
-- **Background Color**: #3ba32d (Green)
-- **Table Color**: #fff (White)
-- **Table Header element Color**: #f9f9f9 (White)
-- **Dice Border Color**: #0d5297; (Blue)
-- **Dice background-color**: #4075df (Blue)
-- **Dice background-color hover**: #3498db (Light Blue)
+### Select Dropdown
+- **Score Selection (`<select>`)**
+  - Font: Helvetica, Arial, sans-serif
+  - Size: 16px
+  - Padding: 10px
+  - Border: 1px solid #bebebe
+  - Margin: 10px 0
 
-### Additional Concepts
-- **Header**: Contains the game title.
+### Dice Container
+- **Dice Wrapper (`#diceContainer`)**
+  - Display: Flex
+  - Justify Content: Center
+  - Gap: 10px
+  - Margin Top: 20px
 
-## Game Components
+- **Individual Dice (`.dice`)**
+  - Width: 80px
+  - Height: 80px
+  - Display: Flex
+  - Flex Direction: Column
+  - Align Items: Center
+  - Justify Content: Center
+  - Border: 1px solid #ccc
+  - Box Shadow: 0 0 10px rgba(0,0,0,0.1)
+  - Border Radius: 10px
 
-### Starting a New Game
-Open the test html file in any modern web browser
+### Tables
+- **Score Tables**
+  - Width: 300px
+  - Border Collapse: Collapse
+  - Background Color: #fff
 
-### In-Game Play
-The game board shows the five dice, a roll button, and options to score points and reroll dice.
+- **Table Headers (`<th>`)**
+  - Background Color: #f9f9f9
+  - Border: 1px solid #e0e0e0
+  - Padding: 10px
+  - Text Align: Center
+
+- **Table Cells (`<td>`)**
+  - Border: 1px solid #e0e0e0
+  - Padding: 10px
+  - Text Align: Center
 
 ### Scoreboard
-The scoreboard displays the current score, score boxes, and the total score.
+- **Total Score Display (`#score-total`)**
+  - Font: Helvetica, Arial, sans-serif
+  - Size: 20px
+  - Margin Top: 100px
+  - Position: Fixed
+  - Top: 0
+  - Right: 70px
 
-### End of the Game
-The final score is shown on top right. You can refresh the page to start a new game. 
+## Color Palette
+- **Primary Text Color:** #000000
+- **Secondary Text Color:** #333333
+- **Button and Select Border Color:** #bebebe
+- **Dice Box Border Color:** #ccc
+- **Table Header Background Color:** #f9f9f9
+- **Table Border Color:** #e0e0e0
+- **Dice Number Color:** #3ba32d
+- **Background Color:** #fff
 
+## Fonts / Sizes
+- **Font Family:** Helvetica, Arial, sans-serif
+- **Main Header Size:** 36px
+- **Button and Select Font Size:** 16px
+- **Dice Number Font Size:** 24px
+- **Scoreboard Font Size:** 20px
+- **Table Cell Font Size:** 16px
+
+## Screenshots
+
+### Initial State
+![Initial State](design_system/initial.png)
+
+### Scoring
+![Scoring](design_system/scoring.png)
+
+### Second Roll
+![Second Roll](design_system/second_roll.png)
