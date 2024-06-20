@@ -7,7 +7,6 @@ and will notify the user of the final score when the game is done.
 ## Table of Contents
 - [Installation](#installation)
 - [Design System](#design-system)
-- [Screenshots](#screenshots)
 
 
 ## Installation
