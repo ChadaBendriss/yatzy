@@ -1,7 +1,7 @@
 # Yatzy Game
 
 Welcome to the Yatzy Game! This is a single-player Yatzy game completely in HTML/JS/CSS.
-The game will enforce the rules of Yatzy, will manage the game state (current score, current role, etc)
+The game will enforce the rules of Yatzy, will manage the game state (current score, current role, etc.)
 and will notify the user of the final score when the game is done.
 
 ## Table of Contents
