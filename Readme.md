@@ -4,6 +4,10 @@ Welcome to the Yatzy Game! This is a single-player Yatzy game completely in HTML
 The game will enforce the rules of Yatzy, will manage the game state (current score, current role, etc.)
 and will notify the user of the final score when the game is done.
 
+Yatzy is a game where players take turns rolling five dice to achieve combinations and score points to get the highest score by the end of the game. 
+
+The player rolls the dice three times per turn and choose which dice to keep each roll.
+
 ## Table of Contents
 - [Installation](#installation)
 - [Design System](#design-system)
