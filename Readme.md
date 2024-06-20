@@ -32,5 +32,3 @@ For more details on how we designed the look of the game, check out our
 [Design System](/docs/design_system.md)
 
 
-![Second Roll](design_system/second_roll.png)
-
