@@ -24,13 +24,13 @@ This document outlines the design system for the Yatzy game, including fonts, co
 Open the test html file in any modern web browser
 
 ### In-Game Play
-The game board shows the five dice, a roll button, and options to keep or reroll dice. Game controls include buttons for rolling dice and ending the turn.
+The game board shows the five dice, a roll button, and options to score points and reroll dice.
 
 ### Scoreboard
 The scoreboard displays the current score, score boxes, and the total score.
 
 ### End of the Game
-The top rigtht screen shows the final score and refresh the page to start a new game.
+The final score is shown on top right. You can refresh the page to start a new game. 
 
 ### Additional Concepts
 - **Header**: Contains the game title.
