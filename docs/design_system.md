@@ -96,8 +96,10 @@
 ### Initial State
 ![Initial State](design_system/initial.png)
 
+### Second Roll
+![Second Roll](design_system/second_roll.png)
+
 ### Scoring
 ![Scoring](design_system/scoring.png)
 
-### Second Roll
-![Second Roll](design_system/second_roll.png)
+
