@@ -17,6 +17,8 @@ This document outlines the design system for the Yatzy game, including fonts, co
 - **Dice background-color**: #4075df (Blue)
 - **Dice background-color hover**: #3498db (Light Blue)
 
+### Additional Concepts
+- **Header**: Contains the game title.
 
 ## Game Components
 
@@ -32,5 +34,3 @@ The scoreboard displays the current score, score boxes, and the total score.
 ### End of the Game
 The final score is shown on top right. You can refresh the page to start a new game. 
 
-### Additional Concepts
-- **Header**: Contains the game title.
