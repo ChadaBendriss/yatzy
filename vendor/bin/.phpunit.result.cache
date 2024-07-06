@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"Yatzy\\Test\\YatzyTest::testNothing":0.005}}
+{"version":1,"defects":{"Yatzy\\Test\\YatzyEngineTest::testScoreTurn":3},"times":{"Yatzy\\Test\\YatzyTest::testNothing":0.026,"Yatzy\\Test\\DiceTest::testConstructor":0.001,"Yatzy\\Test\\YatzyEngineTest::testScoreTurn":0.002,"Yatzy\\Test\\YatzyEngineTest::testUpdateOverallScore":0.001,"Yatzy\\Test\\YatzyGameTest::testInitialState":0.001}}
