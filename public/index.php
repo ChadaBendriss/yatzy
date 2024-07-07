@@ -1,73 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Test Page</title>
-    <script type="text/javascript" src="/assets/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <?php
-    require_once('_config.php');
+<?php
+require_once('_config.php');
 
-    use Yatzy\Dice;
-    use Yatzy\YatzyGame;
-    use Yatzy\YatzyEngine;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
-    $game = new YatzyGame();
-    $engine = new YatzyEngine();
+$app = AppFactory::create();
+
+$app->get('/', function (Request $request, Response $response, $args) {
+    // Calculate initial scores and bonus information
+    $game = new Yatzy\YatzyGame();
+    $engine = new Yatzy\YatzyEngine();
+
+    // Roll dice and calculate scores
+    $game->rollDice();
+    $scoreOnes = $engine->scoreTurn($game, 'ones');
+    $game->addTurn('ones', $scoreOnes);
 
     $game->rollDice();
-    $score = $engine->scoreTurn($game, 'ones');
-    $game->addTurn('ones', $score);
-    echo "Score for 'ones': $score<br>";
-
-    $game->rollDice();
-    $score = $engine->scoreTurn($game, 'twos');
-    $game->addTurn('twos', $score);
-    echo "Score for 'twos': $score<br>";
+    $scoreTwos = $engine->scoreTurn($game, 'twos');
+    $game->addTurn('twos', $scoreTwos);
 
     $engine->updateOverallScore($game);
-    echo "Total Score: " . $game->getScore() . "<br>";
-    echo "Bonus: " . $game->getBonus() . "<br>";
-    ?>
+    $totalScore = $game->getScore();
+    $bonus = $game->getBonus();
 
-    <div id="output">--</div>
-    <button id="version">Version</button>
-    <div id="die1">--</div>
-    <button id="roll">Roll Die</button>
+    // Generate the view
+    $view = file_get_contents("{$GLOBALS["appDir"]}/views/index.html");
+    $view = str_replace('Score for \'ones\': 0', 'Score for \'ones\': ' . $scoreOnes, $view);
+    $view = str_replace('Score for \'twos\': 0', 'Score for \'twos\': ' . $scoreTwos, $view);
+    $view = str_replace('Total Score: 0', 'Total Score: ' . $totalScore, $view);
+    $view = str_replace('Bonus: 0', 'Bonus: ' . $bonus, $view);
 
-    <script>
-        $(document).ready(function() {
-            const output = $("#output");
-            const die1 = $("#die1");
+    // Return the response
+    $response->getBody()->write($view);
+    return $response;
+});
 
-            $("#version").click(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "/api.php",
-                    dataType: "json",
-                    success: function(data) {
-                        output.html("Version: " + data.version);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("An error occurred: " + status + " " + error);
-                    }
-                });
-            });
-
-            $("#roll").click(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "/api.php?action=roll",
-                    dataType: "json",
-                    success: function(data) {
-                        die1.html("Rolled: " + data.value);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("An error occurred: " + status + " " + error);
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+$app->run();

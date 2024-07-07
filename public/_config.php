@@ -1,6 +1,9 @@
 <?php
 
 $GLOBALS["appDir"] = resolve_path("app");
+$GLOBALS["vendorDir"] = resolve_path("vendor");
+
+require_once $GLOBALS["vendorDir"] . "/autoload.php";
 
 function resolve_path($name)
 {
@@ -28,6 +31,6 @@ spl_autoload_register(function ($fullName) {
     $className = $parts[$len - 1];
     if (file_exists($GLOBALS["appDir"] . "/models/{$className}.php"))
     {
-      require_once $GLOBALS["appDir"] . "/models/{$className}.php";
+        require_once $GLOBALS["appDir"] . "/models/{$className}.php";
     }
 });

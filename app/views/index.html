@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <script type="text/javascript" src="/assets/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Initial scores and bonus information -->
+    <div id="scores">
+        <div>Score for 'ones': 0</div>
+        <div>Score for 'twos': 0</div>
+        <div>Total Score: 0</div>
+        <div>Bonus: 0</div>
+    </div>
+
+    <!-- AJAX functionality for version and die roll -->
+    <div id="output">Version: --</div>
+    <button id="version">Version</button>
+    <div id="die1">Rolled: --</div>
+    <button id="roll">Roll Die</button>
+
+    <script>
+        $(document).ready(function() {
+            const output = $("#output");
+            const die1 = $("#die1");
+
+            $("#version").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/api.php",
+                    dataType: "json",
+                    success: function(data) {
+                        output.html("Version: " + data.version);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("An error occurred: " + status + " " + error);
+                    }
+                });
+            });
+
+            $("#roll").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/api.php?action=roll",
+                    dataType: "json",
+                    success: function(data) {
+                        die1.html("Rolled: " + data.value);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("An error occurred: " + status + " " + error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
