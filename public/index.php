@@ -21,3 +21,16 @@ echo "Score for 'twos': $score<br>";
 $engine->updateOverallScore($game);
 echo "Total Score: " . $game->getScore() . "<br>";
 echo "Bonus: " . $game->getBonus() . "<br>";
+?>
+
+<!-- HTML and JavaScript for button and output -->
+<div id="output">--</div>
+<button id="version">Version</button>
+
+<script>
+const output = document.getElementById("output");
+const version = document.getElementById("version");
+version.onclick = function(e) {
+  output.innerHTML = "Look up version clicked";
+}
+</script>
