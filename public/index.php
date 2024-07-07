@@ -32,11 +32,13 @@
     <!-- HTML and JavaScript for button and output -->
     <div id="output">--</div>
     <button id="version">Version</button>
+    <div id="die1">--</div>
     <button id="roll">Roll Die</button>
 
     <script>
         const output = document.getElementById("output");
         const version = document.getElementById("version");
+        const die1 = document.getElementById("die1");
         const roll = document.getElementById("roll");
 
         version.onclick = function(e) {
@@ -57,7 +59,8 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == XMLHttpRequest.DONE) {
                     if (xmlhttp.status == 200) {
-                        output.innerHTML = xmlhttp.responseText;
+                        const response = JSON.parse(xmlhttp.responseText);
+                        die1.innerHTML = response.value;
                     }
                 }
             };
