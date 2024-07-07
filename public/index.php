@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Test Page</title>
+    <script type="text/javascript" src="/assets/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <?php
@@ -29,44 +30,44 @@
     echo "Bonus: " . $game->getBonus() . "<br>";
     ?>
 
-    <!-- HTML and JavaScript for button and output -->
     <div id="output">--</div>
     <button id="version">Version</button>
     <div id="die1">--</div>
     <button id="roll">Roll Die</button>
 
     <script>
-        const output = document.getElementById("output");
-        const version = document.getElementById("version");
-        const die1 = document.getElementById("die1");
-        const roll = document.getElementById("roll");
+        $(document).ready(function() {
+            const output = $("#output");
+            const die1 = $("#die1");
 
-        version.onclick = function(e) {
-            const xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                    if (xmlhttp.status == 200) {
-                        output.innerHTML = xmlhttp.responseText;
+            $("#version").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/api.php",
+                    dataType: "json",
+                    success: function(data) {
+                        output.html("Version: " + data.version);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("An error occurred: " + status + " " + error);
                     }
-                }
-            };
-            xmlhttp.open("GET", "/api.php", true);
-            xmlhttp.send();
-        }
+                });
+            });
 
-        roll.onclick = function(e) {
-            const xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-                    if (xmlhttp.status == 200) {
-                        const response = JSON.parse(xmlhttp.responseText);
-                        die1.innerHTML = response.value;
+            $("#roll").click(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "/api.php?action=roll",
+                    dataType: "json",
+                    success: function(data) {
+                        die1.html("Rolled: " + data.value);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("An error occurred: " + status + " " + error);
                     }
-                }
-            };
-            xmlhttp.open("GET", "/api.php?action=roll", true);
-            xmlhttp.send();
-        }
+                });
+            });
+        });
     </script>
 </body>
 </html>
