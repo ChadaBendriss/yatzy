@@ -27,7 +27,7 @@
             $("#version").click(function() {
                 $.ajax({
                     type: "GET",
-                    url: "/api.php",
+                    url: "/api/version",
                     dataType: "json",
                     success: function(data) {
                         output.html("Version: " + data.version);
@@ -41,7 +41,7 @@
             $("#roll").click(function() {
                 $.ajax({
                     type: "GET",
-                    url: "/api.php?action=roll",
+                    url: "/api/roll",
                     dataType: "json",
                     success: function(data) {
                         die1.html("Rolled: " + data.value);

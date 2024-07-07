@@ -7,10 +7,32 @@ use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
+// Helper function to return JSON response
+function jsonReply(Response $response, $data)
+{
+    $payload = json_encode($data);
+    $response->getBody()->write($payload);
+    return $response->withHeader('Content-Type', 'application/json');
+}
+
+// Route for version
+$app->get('/api/version', function (Request $request, Response $response, $args) {
+    $data = ["version" => "1.0"];
+    return jsonReply($response, $data);
+});
+
+// Route for roll
+$app->get('/api/roll', function (Request $request, Response $response, $args) {
+    $d = new \Yatzy\Dice();
+    $data = ["value" => $d->roll()];
+    return jsonReply($response, $data);
+});
+
+// Serve the HTML view
 $app->get('/', function (Request $request, Response $response, $args) {
     // Calculate initial scores and bonus information
-    $game = new Yatzy\YatzyGame();
-    $engine = new Yatzy\YatzyEngine();
+    $game = new \Yatzy\YatzyGame();
+    $engine = new \Yatzy\YatzyEngine();
 
     // Roll dice and calculate scores
     $game->rollDice();
