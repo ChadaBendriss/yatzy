@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.game-container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.dice-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.dice {
+    display: inline-block;
+    margin: 5px;
+    font-size: 2em;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.dice-container input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.5);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 5px;
+}
+
+#roll-dice, #submit-score, #start-over {
+    display: inline-block;
+}
+
+.dropdown {
+    display: inline-block; /* Align the dropdown button with the other buttons */
+}
+
+.category-options {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    margin: 20px 0;
+    gap: 40px; /* Add gap between the score table and leaderboard table */
+}
+
+.score-container {
+    margin: 20px 0;
+}
+
+#score-table,
+#leaderboard-table {
+    width: 20%; /* Adjusted width */
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#score-table th, #score-table td,
+#leaderboard-table th, #leaderboard-table td {
+    border: 1px solid #000;
+    padding: 5px; /* Reduced padding */
+    text-align: center;
+    font-size: 0.9em; /* Reduced font size */
+}
+
+#score-table th,
+#leaderboard-table th {
+    background-color: #f2f2f2;
+}
+
+.category-score {
+    background-color: #fff;
+}
+
+.category-score.bold {
+    font-weight: bold;
+}
+
+.category-score.filled {
+    background-color: #d3d3d3; /* Light grey background for filled cells */
+    pointer-events: none; /* Disable interaction */
+}
+
+#total-score {
+    font-weight: bold;
+}
+
+/* Dropdown styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #cccccc;
+    border: solid;
+    border-width: 1px;
+    border-radius: 1.5px;
+    border-color: #444444;
+}

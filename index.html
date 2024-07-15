@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahtzee Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Yahtzee Game</h1>
+        <div class="dice-container">
+            <!-- Dice will be rendered here -->
+        </div>
+        <button id="roll-dice">Roll Dice</button>
+        <button id="submit-score">Submit Score</button>
+        <button id="start-over">Start Over</button>
+        <div class="dropdown">
+            <button class="dropbtn">Score Options</button>
+            <div class="dropdown-content">
+                <button class="score-option" data-category="Ones">Ones</button>
+                <button class="score-option" data-category="Twos">Twos</button>
+                <button class="score-option" data-category="Threes">Threes</button>
+                <button class="score-option" data-category="Fours">Fours</button>
+                <button class="score-option" data-category="Fives">Fives</button>
+                <button class="score-option" data-category="Sixes">Sixes</button>
+                <button class="score-option" data-category="ThreeOfAKind">Three of a Kind</button>
+                <button class="score-option" data-category="FourOfAKind">Four of a Kind</button>
+                <button class="score-option" data-category="FullHouse">Full House</button>
+                <button class="score-option" data-category="SmallStraight">Small Straight</button>
+                <button class="score-option" data-category="LargeStraight">Large Straight</button>
+                <button class="score-option" data-category="Yahtzee">Yahtzee</button>
+                <button class="score-option" data-category="Chance">Chance</button>
+            </div>
+        </div>
+        <div class="category-options">
+            <table id="score-table">
+                <tr><th>Category</th><th>Score</th></tr>
+                <tr><td>Ones</td><td class="category-score" data-category="Ones">0</td></tr>
+                <tr><td>Twos</td><td class="category-score" data-category="Twos">0</td></tr>
+                <tr><td>Threes</td><td class="category-score" data-category="Threes">0</td></tr>
+                <tr><td>Fours</td><td class="category-score" data-category="Fours">0</td></tr>
+                <tr><td>Fives</td><td class="category-score" data-category="Fives">0</td></tr>
+                <tr><td>Sixes</td><td class="category-score" data-category="Sixes">0</td></tr>
+                <tr><td>Three of a Kind</td><td class="category-score" data-category="ThreeOfAKind">0</td></tr>
+                <tr><td>Four of a Kind</td><td class="category-score" data-category="FourOfAKind">0</td></tr>
+                <tr><td>Full House</td><td class="category-score" data-category="FullHouse">0</td></tr>
+                <tr><td>Small Straight</td><td class="category-score" data-category="SmallStraight">0</td></tr>
+                <tr><td>Large Straight</td><td class="category-score" data-category="LargeStraight">0</td></tr>
+                <tr><td>Yahtzee</td><td class="category-score" data-category="Yahtzee">0</td></tr>
+                <tr><td>Chance</td><td class="category-score" data-category="Chance">0</td></tr>
+                <tr><td>Total Score</td><td id="total-score">0</td></tr>
+            </table>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
+                </thead>
+                <tbody id="leaderboard">
+                    <!-- Leaderboard will be rendered here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="score-container">
+            <!-- Scores will be displayed here -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
