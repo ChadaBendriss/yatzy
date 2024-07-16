@@ -1,5 +1,6 @@
 # Yahtzee Game
 
+(See our portfolio: https://github.com/utct/portfolio)
 This version of our Yahtzee game includes a PHP server component for managing the scoring by using AJAX to communicate between the HTML/CSS/JS client with the PHP server. 
 
 ## Features
