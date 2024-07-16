@@ -45,4 +45,5 @@ This version of our Yahtzee game includes a PHP server component for managing th
 
 ## You will be prompted to enter your name and see it on the leaderboard!
 (The leaderboard will automatically sort the scores.)
+
 ![Yahtzee Game Screenshot 2](versions/02/docs/s2.png)
