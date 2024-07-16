@@ -34,16 +34,15 @@ This version of our Yahtzee game includes a PHP server component for managing th
 - `server.php` - The PHP file for managing the game state and scoring.
 
 ## Game States
-Initial State
+## Initial State
 ![Yahtzee Game Screenshot 1](versions/02/docs/s1.png)
 
-
-After rolling dice and keeping 2's
+## After rolling dice and keeping 2's
 ![Yahtzee Game Screenshot 2](versions/02/docs/s2.png)
 
-Rolling dice again and choosing the scoring option
+## Rolling dice again and choosing the scoring option
 ![Yahtzee Game Screenshot 2](versions/02/docs/s3.png)
 
-You will be prompted to enter your name and see it on the leaderboard!
-(The leaderboard will automatically sort the scores.)
+## You will be prompted to enter your name and see it on the leaderboard!
+## (The leaderboard will automatically sort the scores.)
 ![Yahtzee Game Screenshot 2](versions/02/docs/s2.png)
