@@ -137,8 +137,8 @@ function scoreCategory($category) {
 
     $_SESSION['scores'][$category] = $score;
     $_SESSION['score'] += $score;
-    $_SESSION['rollCount'] = 0; 
-    $_SESSION['keepDice'] = [false, false, false, false, false]; 
+    $_SESSION['rollCount'] = 0;
+    $_SESSION['keepDice'] = [false, false, false, false, false];
 
     
     $allScored = array_reduce($_SESSION['scores'], fn($carry, $score) => $carry && $score !== null, true);

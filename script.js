@@ -6,8 +6,7 @@ $(document).ready(function() {
             data: { action: 'get_game_state' },
             success: function(response) {
                 const gameState = JSON.parse(response);
-                renderDice(gameState.dice, gameState.keepDice);
-                renderScore(gameState.score);
+                renderDice(gameState.dice, gameState.keepDice, gameState.rollCount);
                 renderLeaderboard(gameState.leaderboard);
                 updateScoreTable(gameState.scores);
                 updateRollCount(gameState.rollCount);
@@ -16,21 +15,18 @@ $(document).ready(function() {
         });
     }
 
-    function renderDice(dice, keepDice) {
+    function renderDice(dice, keepDice, rollCount) {
         $('.dice-container').empty();
         dice.forEach(function(die, index) {
             const checked = keepDice[index] ? 'checked' : '';
+            const disabled = keepDice[index] || rollCount === 0 ? 'disabled' : '';
             $('.dice-container').append(`
                 <div class="dice" data-index="${index}">
                     ${die}
-                    <input type="checkbox" class="keep-die" data-index="${index}" ${checked}>
+                    <input type="checkbox" class="keep-die" data-index="${index}" ${checked} ${disabled}>
                 </div>
             `);
         });
-    }
-
-    function renderScore(score) {
-        $('.score-container').html('Score: ' + score);
     }
 
     function renderLeaderboard(leaderboard) {
@@ -68,7 +64,6 @@ $(document).ready(function() {
         const allScored = Object.values(scores).every(score => score !== null);
         if (allScored) {
             $('#roll-dice').prop('disabled', true);
-            $('#submit-score').prop('disabled', false);
             $('.score-option').prop('disabled', true);
         }
     }
@@ -118,7 +113,6 @@ $(document).ready(function() {
             data: { action: 'score_category', category: category },
             success: function(response) {
                 updateGameState();
-                // Automatically submit score after selecting a category
                 submitScoreListener();
             }
         });
@@ -136,7 +130,6 @@ $(document).ready(function() {
     }
 
     document.getElementById('roll-dice').addEventListener('click', rollDiceListener);
-    document.getElementById('submit-score').addEventListener('click', submitScoreListener);
     document.getElementById('start-over').addEventListener('click', startOverListener);
     
     document.querySelectorAll('.score-option').forEach(button => {

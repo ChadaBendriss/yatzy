@@ -22,12 +22,12 @@ class Game {
         $newEntry = ['name' => $name, 'score' => $score];
         $_SESSION['leaderboard'][] = $newEntry;
 
-        // Sort the leaderboard by score in descending order
+        
         usort($_SESSION['leaderboard'], function($a, $b) {
             return $b['score'] - $a['score'];
         });
 
-        // Keep only the top 10 scores
+        
         $_SESSION['leaderboard'] = array_slice($_SESSION['leaderboard'], 0, 10);
     }
 }
