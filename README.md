@@ -32,3 +32,18 @@ This version of our Yahtzee game includes a PHP server component for managing th
 - `styles.css` - The CSS file for styling the game interface.
 - `script.js` - The JavaScript file for game logic and interactivity.
 - `server.php` - The PHP file for managing the game state and scoring.
+
+## Game States
+Initial State
+![Yahtzee Game Screenshot 1](versions/02/docs/s1.png)
+
+
+After rolling dice and keeping 2's
+![Yahtzee Game Screenshot 2](versions/02/docs/s2.png)
+
+Rolling dice again and choosing the scoring option
+![Yahtzee Game Screenshot 2](versions/02/docs/s3.png)
+
+You will be prompted to enter your name and see it on the leaderboard!
+(The leaderboard will automatically sort the scores.)
+![Yahtzee Game Screenshot 2](versions/02/docs/s2.png)
