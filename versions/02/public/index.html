@@ -13,25 +13,30 @@
         <div class="dice-container">
             <!-- Dice will be rendered here -->
         </div>
-        <button id="roll-dice">Roll Dice</button>
-        <button id="start-over">Start Over</button>
-        <div class="dropdown">
-            <button class="dropbtn">Score Options</button>
-            <div class="dropdown-content">
-                <button class="score-option" data-category="Ones">Ones</button>
-                <button class="score-option" data-category="Twos">Twos</button>
-                <button class="score-option" data-category="Threes">Threes</button>
-                <button class="score-option" data-category="Fours">Fours</button>
-                <button class="score-option" data-category="Fives">Fives</button>
-                <button class="score-option" data-category="Sixes">Sixes</button>
-                <button class="score-option" data-category="ThreeOfAKind">Three of a Kind</button>
-                <button class="score-option" data-category="FourOfAKind">Four of a Kind</button>
-                <button class="score-option" data-category="FullHouse">Full House</button>
-                <button class="score-option" data-category="SmallStraight">Small Straight</button>
-                <button class="score-option" data-category="LargeStraight">Large Straight</button>
-                <button class="score-option" data-category="Yahtzee">Yahtzee</button>
-                <button class="score-option" data-category="Chance">Chance</button>
+        <div id="buttons-rolls-container">
+            <div id="buttons">
+                <button id="roll-dice">Roll Dice</button>
+                <button id="start-over">Start Over</button>
+                <div class="dropdown">
+                    <button class="dropbtn">Score Options</button>
+                    <div class="dropdown-content">
+                        <button class="score-option" data-category="Ones">Ones</button>
+                        <button class="score-option" data-category="Twos">Twos</button>
+                        <button class="score-option" data-category="Threes">Threes</button>
+                        <button class="score-option" data-category="Fours">Fours</button>
+                        <button class="score-option" data-category="Fives">Fives</button>
+                        <button class="score-option" data-category="Sixes">Sixes</button>
+                        <button class="score-option" data-category="ThreeOfAKind">Three of a Kind</button>
+                        <button class="score-option" data-category="FourOfAKind">Four of a Kind</button>
+                        <button class="score-option" data-category="FullHouse">Full House</button>
+                        <button class="score-option" data-category="SmallStraight">Small Straight</button>
+                        <button class="score-option" data-category="LargeStraight">Large Straight</button>
+                        <button class="score-option" data-category="Yahtzee">Yahtzee</button>
+                        <button class="score-option" data-category="Chance">Chance</button>
+                    </div>
+                </div>
             </div>
+            <div id="roll-count">Remaining Rolls: 3</div>
         </div>
         <div class="category-options">
             <table id="score-table">

@@ -51,6 +51,9 @@ $(document).ready(function() {
     }
 
     function updateRollCount(rollCount) {
+        const remainingRolls = 3 - rollCount;
+        $('#roll-count').text('Remaining Rolls: ' + remainingRolls);
+        
         if (rollCount >= 3) {
             $('#roll-dice').prop('disabled', true);
             $('.score-option').prop('disabled', false);
@@ -113,6 +116,7 @@ $(document).ready(function() {
             data: { action: 'score_category', category: category },
             success: function(response) {
                 updateGameState();
+                // Automatically submit score after selecting a category
                 submitScoreListener();
             }
         });

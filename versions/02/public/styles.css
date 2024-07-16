@@ -9,8 +9,6 @@ body {
 }
 
 .dice-container {
-    display: flex;
-    justify-content: center;
     margin: 20px 0;
 }
 
@@ -22,19 +20,29 @@ body {
     border: 1px solid #000;
 }
 
-.dice-container input[type="checkbox"] {
-    margin-left: 10px;
-    transform: scale(1.5);
-}
-
 button {
     padding: 10px 20px;
     font-size: 1em;
     margin: 5px;
 }
 
-#roll-dice, #submit-score, #start-over {
+#roll-dice, #start-over {
     display: inline-block;
+}
+
+#buttons-rolls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#buttons {
+    margin-bottom: 20px; /* Increased margin between buttons and roll count text */
+}
+
+#roll-count {
+    margin: 10px 0;
+    font-size: 1.2em;
 }
 
 .dropdown {
