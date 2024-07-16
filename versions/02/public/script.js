@@ -116,7 +116,6 @@ $(document).ready(function() {
             data: { action: 'score_category', category: category },
             success: function(response) {
                 updateGameState();
-                // Automatically submit score after selecting a category
                 submitScoreListener();
             }
         });
