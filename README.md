@@ -1,4 +1,4 @@
-# Yatzy Game
+:# Yahtzee Game (Yatzy v2)
 
 See our [portfolio](https://github.com/utct/portfolio)
 
